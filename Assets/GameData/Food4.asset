@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d342a37ba643c29818983b305734a9, type: 3}
+  m_Name: Food4
+  m_EditorClassIdentifier: 
+  _itemType: Food4
+  _itemVisualPrefab: {fileID: 667020358298216054, guid: 375d0ba2f783aee408eac05f920a9126, type: 3}
+  _defaultScale: {x: 1, y: 1, z: 1}
+  _collectedScale: {x: 1, y: 1, z: 1}
+  _collectedRotation: {x: 0, y: 180, z: 0}
+  _collectedPositionOffset: {x: 0, y: 0, z: 0}
+  _orderScale: {x: 1, y: 1, z: 1}
+  _orderRotation: {x: 90, y: 180, z: 0}
+  _orderPositionOffset: {x: 0, y: 0, z: 0}
