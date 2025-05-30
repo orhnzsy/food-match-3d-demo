@@ -152,7 +152,7 @@ namespace FoodMatch.Level.Mechanics.Items
 
         private IEnumerator SwitchToAnotherCollectionAreaCoroutine(Vector3 targetPosition)
         {
-            State = BoardItemState.SwitchingPlacesInCollectionArea;
+           // State = BoardItemState.SwitchingPlacesInCollectionArea;
             IsMoving = true;
             while (Vector3.Distance(targetPosition, transform.position) > 0.1f)
             {

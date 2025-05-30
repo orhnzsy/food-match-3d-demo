@@ -47,7 +47,7 @@ namespace FoodMatch.Level.Mechanics.ItemCollection
             {
                 var collectionArea = _collectionAreas[i];
                 var targetCollectionArea = _collectionAreas[i + 1];
-                if (collectionArea.IsOccupied())
+                if (collectionArea.IsOccupied() && !targetCollectionArea.IsOccupied())
                 {
                     var targetItem = collectionArea.Item;
                     collectionArea.RemoveItem(targetItem);
@@ -122,6 +122,7 @@ namespace FoodMatch.Level.Mechanics.ItemCollection
             var rightPosition = collectionAreaList[2].transform.position + heightOffset;
             collectionAreaList.ForEach(x => x.Item.OnItemMatched());
             collectionAreaList.ForEach(x => x.SetItem(null));
+            FIllEmptyAreas();
 
             float duration = 0.2f;
             float elapsedTime = 0f;
@@ -153,7 +154,19 @@ namespace FoodMatch.Level.Mechanics.ItemCollection
             itemList.ForEach(x => Destroy(x.gameObject));
             Instantiate(_collectParticle, centerPosition, Quaternion.identity);
             GameEvents.MatchOccured?.Invoke();
-            FIllEmptyAreas();
+            FillEmptyAreasAnimation();
+        }
+
+        private void FillEmptyAreasAnimation()
+        {
+            for (int i = 0; i < _collectionAreas.Length - 1; i++)
+            {
+                var collectionArea = _collectionAreas[i];
+                if (collectionArea.IsOccupied())
+                {
+                    collectionArea.Item.SwitchToAnotherCollectionArea(collectionArea.transform.position);
+                }
+            }
         }
 
         private void FIllEmptyAreas()
@@ -171,7 +184,6 @@ namespace FoodMatch.Level.Mechanics.ItemCollection
                             var item = nextCollectionArea.Item;
                             nextCollectionArea.RemoveItem(item);
                             collectionArea.SetItem(item);
-                            item.SwitchToAnotherCollectionArea(collectionArea.transform.position);
                             break;
                         }
                     }
